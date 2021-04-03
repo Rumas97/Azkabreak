@@ -31,23 +31,13 @@ In this game the player has to move Harry Potter vertically and shoot spells at 
 
 **game.js**
 * startLoop(){}
-* collision(){}
 * clearCanvas(){}
-* drawCanvas(){}
-* keepScore(){}
-* endGame(){}
-
-**harrypotter.js**
 * draw(){}
 * move(){}
 * shoot(){}
-
-**deathEaters.js**
-* draw(){}
-* move(){}
-
-
-
+* collision(){}
+* keepScore(){}
+* endGame(){}
 
 
 ## States & States Transitions
