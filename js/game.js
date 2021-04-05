@@ -27,8 +27,11 @@ let hpX = 30,
   hpIncr = 4;
 
 let numOfSpells = [
-  // {x :hpX+hp.width, y: hpY+(hp.height/2) },
+  //{x :hpX+hp.width, y: hpY+(hp.height/2) },
 ];
+/*let spellObject = {};
+spellObject["x"] = hpX + hp.width;
+spellObject["y"] = hpY + (hp.height/2)*/
 
 let isArrowUp = false,
   isArrowDown = false,
@@ -58,6 +61,10 @@ function draw() {
     ctx.drawImage(spell, numOfSpells[j].x, numOfSpells[j].y);
 
     numOfSpells[j].x = numOfSpells[j].x + 5;
+
+    if (numOfSpells.length > 0 && numOfSpells[j].x > canvas.width) {
+      numOfSpells.splice(0, 1);
+    }
   }
 
   //making dementors move
@@ -65,7 +72,7 @@ function draw() {
     ctx.drawImage(dementor, numOfDem[i].x, numOfDem[i].y);
     ctx.drawImage(dementor, numOfDem[i].x, numOfDem[i].y + constant);
 
-    numOfDem[i].x = numOfDem[i].x - 5;
+    numOfDem[i].x = numOfDem[i].x - 3;
 
     //y = Math.floor((i*canvas.height/numOfDem.length) +(Math.random()*canvas.height/numOfDem.length)-dementor.height)
 
@@ -82,12 +89,19 @@ function draw() {
 
     //collsion with dementors
     if (
-      hpX + hp.width >= numOfDem[i].x &&
+      /*hpX + hp.width >= numOfDem[i].x &&
       hpX <= numOfDem[i].x + dementor.width &&
       (hpY <= numOfDem[i].y + dementor.height ||
-        hpY + hp.height > numOfDem[i].y + constant)
+      hpY + hp.height >= numOfDem[i].y + constant)*/
+      numOfDem[i].x <= hpX + hp.width &&
+      numOfDem[i].x + dementor.width >= hpX &&
+      ((numOfDem[i].y <= hpY + hp.height &&
+        numOfDem[i].y + dementor.height >= hpY) ||
+        (numOfDem[i].y + constant <= hpY + hp.height &&
+          numOfDem[i].y + dementor.height + constant >= hpY))
     ) {
       isGameOver = true;
+      console.log("dementor crash");
     }
   }
 
@@ -100,6 +114,7 @@ function draw() {
   }
 
   if (hpY + hp.height > canvas.height || hpY < 0) {
+    console.log("canvas crash");
     isGameOver = true;
   }
 
@@ -108,18 +123,18 @@ function draw() {
     gameIntro.style.display = "block";
     startBtn.style.display = "none";
     canvas.style.display = "none";
-    gameInfo.style.display = "none";
-    gameOver.style.display = "block";
+    restartBtn.style.display = "block";
+    //gameInfo.style.display = "none";
   } else {
     intervalId = requestAnimationFrame(draw);
   }
 }
 
 function start() {
-  //does not work why?
   gameIntro.style.display = "none";
-  console.log(gameIntro.style.display);
+  startBtn.style.display = "none";
   canvas.style.display = "block";
+
   draw();
 }
 
@@ -142,7 +157,9 @@ document.addEventListener("keydown", (event) => {
     isArrowUp = false;
     isArrowDown = true;
   } else if (event.code == "Space") {
-    isSpaceKey = true;
+    numOfSpells.push({ x: hpX + hp.width, y: hpY + hp.height / 2 });
+    isSpaceKey = false;
+    console.log(numOfSpells);
   }
 });
 
@@ -153,13 +170,14 @@ document.addEventListener("keyup", () => {
 });
 
 restartBtn.addEventListener("click", (event) => {
+  restartBtn.style.display = "none";
   console.log("restart");
   restart();
 });
 
 window.addEventListener("load", (event) => {
   canvas.style.display = "none";
-  gameOver.style.display = "none";
+  restartBtn.style.display = "none";
 
   startBtn.addEventListener("click", (event) => {
     console.log("start");
