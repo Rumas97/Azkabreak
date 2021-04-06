@@ -3,7 +3,8 @@ let gameIntro = document.querySelector(".game-intro");
 let gameVictory = document.querySelector(".game-victory");
 let gameInfo = document.querySelector(".game-info");
 let gameLose = document.querySelector(".game-loser")
-let scoreKeeper = document.querySelector("#scorekeep")
+let scoreKeeper = document.querySelector("#scoreKeeper");
+let scoreBoard = document.querySelector(".score-board")
 
 
 
@@ -57,14 +58,6 @@ function draw() {
   //adding harry potter image
   ctx.drawImage(hp, hpX, hpY);
 
-  // to show score
-  //let scoreBoard = document.querySelector(".scoreBoard")
-  //scoreBoard.ctx = scoreBoard.getContext("2d")
-  
-  //ctx.font = '20px Arial'
-  //ctx.fillText(`Dementors killed: ${score}`, 30,30)
-  //scoreBoard.ctx.fillRect(900,0,700,200)
-
 
   // here do movemement for each spell
   for (let h = 0; h < numOfSpells.length; h++) {
@@ -87,7 +80,8 @@ function draw() {
         //the first spell also disappears when the other spell hits the dementor
         x: canvas.width + 100,
       };
-      score ++
+      score++
+      scoreKeeper.innerText = score
     }
 
     // collision with demTwo
@@ -106,7 +100,8 @@ function draw() {
       numOfSpells[h] = {
         x: canvas.width + 100,
       };
-      score ++
+      score++
+      scoreKeeper.innerText = score 
     }
 
     if (numOfSpells.length > 0 && numOfSpells[h].x > canvas.width) {
@@ -119,7 +114,7 @@ function draw() {
   let i = 0;
 
   ctx.drawImage(dementor, demOne[i].x, demOne[i].y);
-  demOne[i].x = demOne[i].x - 5;
+  demOne[i].x = demOne[i].x - 4;
 
   if (demOne[i].x + dementor.width < 0) {
     demOne[i] = {
@@ -127,6 +122,7 @@ function draw() {
       y: Math.floor(Math.random() * (canvas.height / 2 - dementor.height)),
     };
     score --
+    scoreKeeper.innerText = score 
   }
   //collision with demOne
   if (
@@ -143,7 +139,7 @@ function draw() {
   //Dementor 2 logic
   for (let j = 0; j < demTwo.length; j++) {
     ctx.drawImage(dementor, demTwo[j].x, demTwo[j].y);
-    demTwo[j].x = demTwo[j].x - 5;
+    demTwo[j].x = demTwo[j].x - 4;
 
     if (demTwo[j].x + dementor.width < 0) {
       demTwo[j] = {
@@ -153,6 +149,7 @@ function draw() {
           canvas.height / 2,
       };
       score --
+      scoreKeeper.innerText = score 
     }
     //collsion with demTwo
     if (
@@ -218,7 +215,9 @@ function start() {
   startBtn.style.display = "none";
   canvas.style.display = "block";
   gameLose.style.display = 'none'
-  gameVictory.style.display = 'none'
+  gameVictory.style.display = 'none';
+  scoreBoard.style.display= 'block'
+  
   draw();
 }
 
@@ -229,7 +228,8 @@ function restart() {
   demOne = [{ x: 845, y: 50 }];
   demTwo =[{ x: 945, y: 250 }]
   numOfSpells = [];
-  score = 0;
+  score= 0;
+  scoreKeeper.innerText= score
   start();
 }
 
@@ -264,7 +264,8 @@ window.addEventListener("load", (event) => {
   canvas.style.display = "none";
   restartBtn.style.display = "none";
   gameVictory.style.display = "none";
-  gameLose.style.display = 'none'
+  gameLose.style.display = 'none';
+  scoreBoard.style.display= "none"
 
   startBtn.addEventListener("click", (event) => {
     console.log("start");

@@ -1,53 +1,44 @@
-body{
-    margin:0;
-    padding:0;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-
-
-#start-button{
-    background-color: darkgrey;
-    height: 40px;
-    width: 90px;
-    margin-left: 400px;
-    margin-top: 10px;
-    font-size: 20px;
-    
+#start-button {
+  background-color: darkgrey;
+  height: 40px;
+  width: 90px;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 20px;
 }
 
-#restart-button{
-    background-color: darkgrey;
-    height: 40px;
-    width: 120px;
-    font-size: 20px;
-    margin-left: 600px;
-    margin-top: 10px;
-    
+#restart-button {
+  background-color: darkgrey;
+  height: 40px;
+  width: 120px;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .game-intro {
-    background-image: url("./images/logo.png");
-    background-repeat: no-repeat;
-    height: 793px;
-    width: 1394px;
-    
-    
+  background-image: url("./images/logo.png");
+  background-repeat: no-repeat;
+  height: 793px;
+  width: 1394px;
 }
 
-.game-intro > p{
-
-    
-    font-size: 20px;
-    font-family: fantasy;
-    color: beige;
-    text-align: center;
-    display: flex;
-    flex-direction: column-reverse;
-    padding-top: 650px; 
-    margin-top: 0;
+.game-intro > p {
+  font-size: 20px;
+  font-family: fantasy;
+  color: beige;
+  text-align: center;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-top: 650px;
+  margin-top: 0;
 }
 
-canvas{
-    border: 1px solid black
+canvas {
+  border: 1px solid black;
 }
-
