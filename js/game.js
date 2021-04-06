@@ -26,19 +26,15 @@ let hpX = 30,
   hpY = 30,
   hpIncr = 4;
 
-let numOfSpells = [
-  //{x :hpX+hp.width, y: hpY+(hp.height/2) },
-];
-/*let spellObject = {};
-spellObject["x"] = hpX + hp.width;
-spellObject["y"] = hpY + (hp.height/2)*/
+let numOfSpells = [];
 
 let isArrowUp = false,
   isArrowDown = false,
   isSpaceKey = false;
 
 // number of dementor objects
-let numOfDem = [{ x: 845, y: 50 }];
+let demOne = [{ x: 845, y: 50 }];
+let demTwo = [{ x: 945, y: 250 }];
 
 let distanceBetweenDem = 150;
 let constant = distanceBetweenDem + dementor.height;
@@ -54,56 +50,87 @@ function draw() {
   //adding harry potter image
   ctx.drawImage(hp, hpX, hpY);
 
-  // here push one spell to the array if space is clicked. Then set space to be false.
-
   // here do movemement for each spell
-  for (let j = 0; j < numOfSpells.length; j++) {
-    ctx.drawImage(spell, numOfSpells[j].x, numOfSpells[j].y);
+  for (let h = 0; h < numOfSpells.length; h++) {
+    ctx.drawImage(spell, numOfSpells[h].x, numOfSpells[h].y);
 
-    numOfSpells[j].x = numOfSpells[j].x + 5;
+    numOfSpells[h].x = numOfSpells[h].x + 5;
 
-    if (numOfSpells.length > 0 && numOfSpells[j].x > canvas.width) {
+    if (
+      numOfSpells[h].x + spell.width > demOne[0].x &&
+      numOfSpells[h].y + spell.height > demOne[0].y &&
+      numOfSpells[h].x < demOne[0].x + dementor.width &&
+      numOfSpells[h].y < demOne[0].y + dementor.height
+    ) {
+      demOne[0] = {
+        x: canvas.width + 150,
+        y: Math.floor(Math.random() * (canvas.height / 2 - dementor.height)),
+      };
+      numOfSpells[h] = {
+        x: canvas.width + 100,
+      };
+    }
+
+    if (numOfSpells.length > 0 && numOfSpells[h].x > canvas.width) {
       numOfSpells.splice(0, 1);
     }
   }
 
-  //making dementors move
-  for (let i = 0; i < numOfDem.length; i++) {
-    ctx.drawImage(dementor, numOfDem[i].x, numOfDem[i].y);
-    ctx.drawImage(dementor, numOfDem[i].x, numOfDem[i].y + constant);
+  //Dementor 1 logic
+  // for (let i = 0; i < demOne.length; i++) {
+  let i = 0;
 
-    numOfDem[i].x = numOfDem[i].x - 3;
+  ctx.drawImage(dementor, demOne[i].x, demOne[i].y);
+  demOne[i].x = demOne[i].x - 3;
 
-    //y = Math.floor((i*canvas.height/numOfDem.length) +(Math.random()*canvas.height/numOfDem.length)-dementor.height)
+  if (demOne[i].x + dementor.width < 0) {
+    demOne[i] = {
+      x: 845,
+      y: Math.floor(Math.random() * (canvas.height / 2 - dementor.height)),
+    };
+  }
+  //collision with demOne
+  if (
+    demOne[i].x <= hpX + hp.width &&
+    demOne[i].x + dementor.width >= hpX &&
+    demOne[i].y <= hpY + hp.height &&
+    demOne[i].y + dementor.height >= hpY
+  ) {
+    isGameOver = true;
+    console.log("dementor 1 crash");
+  }
+  //}
 
-    /*if(y < i*canvas.height/numOfDem.length ){
-      y = Math.floor(i*canvas.height/numOfDem.length)
- }*/
+  //Dementor 2 logic
+  for (let j = 0; j < demTwo.length; j++) {
+    ctx.drawImage(dementor, demTwo[j].x, demTwo[j].y);
+    demTwo[j].x = demTwo[j].x - 3;
 
-    if (numOfDem[i].x + dementor.width < 0) {
-      numOfDem[i] = {
-        x: 845,
-        y: Math.floor(Math.random() * (canvas.height / 2 - dementor.height)),
+    if (demTwo[j].x + dementor.width < 0) {
+      demTwo[j] = {
+        x: 945,
+        y:
+          Math.floor(Math.random() * (canvas.height / 2 - dementor.height)) +
+          canvas.height / 2,
       };
     }
-
-    //collsion with dementors
+    //collsion with demTwo
     if (
-      /*hpX + hp.width >= numOfDem[i].x &&
-      hpX <= numOfDem[i].x + dementor.width &&
-      (hpY <= numOfDem[i].y + dementor.height ||
-      hpY + hp.height >= numOfDem[i].y + constant)*/
-      numOfDem[i].x <= hpX + hp.width &&
-      numOfDem[i].x + dementor.width >= hpX &&
-      ((numOfDem[i].y <= hpY + hp.height &&
-        numOfDem[i].y + dementor.height >= hpY) ||
-        (numOfDem[i].y + constant <= hpY + hp.height &&
-          numOfDem[i].y + dementor.height + constant >= hpY))
+      demTwo[j].x <= hpX + hp.width &&
+      demTwo[j].x + dementor.width >= hpX &&
+      demTwo[j].y <= hpY + hp.height &&
+      demTwo[j].y + dementor.height >= hpY
     ) {
       isGameOver = true;
-      console.log("dementor crash");
+      console.log("dementor 2 crash");
     }
   }
+
+  //y = Math.floor((i*canvas.height/demOne.length) +(Math.random()*canvas.height/demOne.length)-dementor.height)
+
+  /*if(y < i*canvas.height/demOne.length ){
+      y = Math.floor(i*canvas.height/demOne.length)
+    }*/
 
   if (isArrowUp && hpY > 0) {
     hpY = hpY - hpIncr;
@@ -142,8 +169,8 @@ function restart() {
   isGameOver = false;
   hpX = 30;
   hpY = 30;
-  numOfDem = [{ x: 845, y: 50 }];
-  numOfSpells = [{ x: hpX + hp.width, y: hpY + hp.height / 2 }];
+  demOne = [{ x: 845, y: 50 }];
+  numOfSpells = [];
   start();
 }
 
@@ -157,9 +184,8 @@ document.addEventListener("keydown", (event) => {
     isArrowUp = false;
     isArrowDown = true;
   } else if (event.code == "Space") {
-    numOfSpells.push({ x: hpX + hp.width, y: hpY + hp.height / 2 });
+    numOfSpells.push({ x: hpX + hp.width, y: hpY + hp.height / 2 }); // here push one spell to the array if space is clicked. Then set space to be false.
     isSpaceKey = false;
-    console.log(numOfSpells);
   }
 });
 
