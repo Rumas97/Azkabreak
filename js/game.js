@@ -1,9 +1,14 @@
 let canvas = document.querySelector("canvas");
 let gameIntro = document.querySelector(".game-intro");
-let gameOver = document.querySelector(".game-over");
+let gameVictory = document.querySelector(".game-victory");
 let gameInfo = document.querySelector(".game-info");
+let gameLose = document.querySelector(".game-loser")
+let scoreKeeper = document.querySelector("#scorekeep")
+
+
 
 let ctx = canvas.getContext("2d");
+
 
 //load all images
 
@@ -21,6 +26,8 @@ spell.src = "./images/spell.png";
 
 let intervalId = 0;
 let isGameOver = false;
+
+let score = 0;
 
 let hpX = 30,
   hpY = 30,
@@ -50,12 +57,22 @@ function draw() {
   //adding harry potter image
   ctx.drawImage(hp, hpX, hpY);
 
+  // to show score
+  //let scoreBoard = document.querySelector(".scoreBoard")
+  //scoreBoard.ctx = scoreBoard.getContext("2d")
+  
+  //ctx.font = '20px Arial'
+  //ctx.fillText(`Dementors killed: ${score}`, 30,30)
+  //scoreBoard.ctx.fillRect(900,0,700,200)
+
+
   // here do movemement for each spell
   for (let h = 0; h < numOfSpells.length; h++) {
     ctx.drawImage(spell, numOfSpells[h].x, numOfSpells[h].y);
 
     numOfSpells[h].x = numOfSpells[h].x + 5;
 
+    // collision with demOne
     if (
       numOfSpells[h].x + spell.width > demOne[0].x &&
       numOfSpells[h].y + spell.height > demOne[0].y &&
@@ -67,8 +84,29 @@ function draw() {
         y: Math.floor(Math.random() * (canvas.height / 2 - dementor.height)),
       };
       numOfSpells[h] = {
+        //the first spell also disappears when the other spell hits the dementor
         x: canvas.width + 100,
       };
+      score ++
+    }
+
+    // collision with demTwo
+    if (
+      numOfSpells[h].x + spell.width > demTwo[0].x &&
+      numOfSpells[h].y + spell.height > demTwo[0].y &&
+      numOfSpells[h].x < demTwo[0].x + dementor.width &&
+      numOfSpells[h].y < demTwo[0].y + dementor.height
+    ) {
+      demTwo[0] = {
+        x: canvas.width + 250,
+        y:
+          Math.floor(Math.random() * (canvas.height / 2 - dementor.height)) +
+          canvas.height / 2,
+      };
+      numOfSpells[h] = {
+        x: canvas.width + 100,
+      };
+      score ++
     }
 
     if (numOfSpells.length > 0 && numOfSpells[h].x > canvas.width) {
@@ -81,13 +119,14 @@ function draw() {
   let i = 0;
 
   ctx.drawImage(dementor, demOne[i].x, demOne[i].y);
-  demOne[i].x = demOne[i].x - 3;
+  demOne[i].x = demOne[i].x - 5;
 
   if (demOne[i].x + dementor.width < 0) {
     demOne[i] = {
       x: 845,
       y: Math.floor(Math.random() * (canvas.height / 2 - dementor.height)),
     };
+    score --
   }
   //collision with demOne
   if (
@@ -104,7 +143,7 @@ function draw() {
   //Dementor 2 logic
   for (let j = 0; j < demTwo.length; j++) {
     ctx.drawImage(dementor, demTwo[j].x, demTwo[j].y);
-    demTwo[j].x = demTwo[j].x - 3;
+    demTwo[j].x = demTwo[j].x - 5;
 
     if (demTwo[j].x + dementor.width < 0) {
       demTwo[j] = {
@@ -113,6 +152,7 @@ function draw() {
           Math.floor(Math.random() * (canvas.height / 2 - dementor.height)) +
           canvas.height / 2,
       };
+      score --
     }
     //collsion with demTwo
     if (
@@ -145,12 +185,28 @@ function draw() {
     isGameOver = true;
   }
 
+  if(score > 2){
+    isGameOver = true
+
+  } 
+
   if (isGameOver) {
     cancelAnimationFrame(intervalId);
     gameIntro.style.display = "block";
     startBtn.style.display = "none";
     canvas.style.display = "none";
     restartBtn.style.display = "block";
+
+    if(score > 2){
+
+      gameVictory.style.display = "block"
+      gameLose.style.display = 'none'
+  
+    }
+    else{
+      gameLose.style.display = 'block'
+      gameVictory.style.display= 'none'
+    } 
     //gameInfo.style.display = "none";
   } else {
     intervalId = requestAnimationFrame(draw);
@@ -161,7 +217,8 @@ function start() {
   gameIntro.style.display = "none";
   startBtn.style.display = "none";
   canvas.style.display = "block";
-
+  gameLose.style.display = 'none'
+  gameVictory.style.display = 'none'
   draw();
 }
 
@@ -170,7 +227,9 @@ function restart() {
   hpX = 30;
   hpY = 30;
   demOne = [{ x: 845, y: 50 }];
+  demTwo =[{ x: 945, y: 250 }]
   numOfSpells = [];
+  score = 0;
   start();
 }
 
@@ -204,6 +263,8 @@ restartBtn.addEventListener("click", (event) => {
 window.addEventListener("load", (event) => {
   canvas.style.display = "none";
   restartBtn.style.display = "none";
+  gameVictory.style.display = "none";
+  gameLose.style.display = 'none'
 
   startBtn.addEventListener("click", (event) => {
     console.log("start");
