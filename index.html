@@ -12,14 +12,10 @@
         Use the up and down arrow to move Harry Potter. Cast spells at incoming
         Dementors using the space key.
       </h1>
-      <img class ="arrow" src="./images/arrowkey.png" alt= 'arrowkeys'/>
-      <img class = "space" src = "./images/space.png" alt="spacekey" />
+      <img class="arrow" src="./images/arrowkey.png" alt="arrowkeys" />
+      <img class="space" src="./images/space.png" alt="spacekey" />
       <button id="start-button">START</button>
-      <button id="restart-button">RESTART</button>
-      
     </div>
-
-    
 
     <canvas width="900" height="500"></canvas>
 
@@ -27,17 +23,17 @@
 
     <div class="game-victory">
       <p>Well done! You have succeeded in protecting the Hogwarts castle!</p>
+      <button id="restart-button">RESTART</button>
     </div>
 
     <div class="game-loser">
       <p>The dementors now have control over Hogwarts!</p>
+      <button id="restart-button">RESTART</button>
     </div>
 
     <div class="score-board">
       <span>Dementors killed: </span><span id="scoreKeeper">0</span>
     </div>
-
-    
 
     <script src="js/game.js"></script>
   </body>

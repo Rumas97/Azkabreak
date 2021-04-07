@@ -49,6 +49,7 @@ div #start-button {
 }
 
 div #restart-button {
+  
   font-size: 20px;
   display: flex;
   margin-top: 20px;
@@ -70,13 +71,46 @@ canvas {
 }
 
 .game-victory {
-  font-size: 20px;
-  font-family: fantasy;
-  display: flex;
-  justify-content: right;
+  background-image: url("./images/castle.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 850px; 
+  padding-top: 50px;
+  position: relative;
+  
 }
 
-.game-loser {
-  font-size: 20px;
+.game-victory p{
+  color: beige;
+  font-size: 40px;
   font-family: fantasy;
+  padding-top: 50px;
+  padding-left: 150px;
+  padding-right: 150px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  text-align: center;
+
+
+}
+
+.game-loser{
+  background-image:url("./images/castle-attacked.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:850px;
+  padding-top:50px;
+  position: relative;
+}
+
+.game-loser p{
+  color: black;
+  font-size: 40px;
+  font-family: fantasy;
+  padding-top: 50px;
+  padding-left: 150px;
+  padding-right: 150px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  text-align: center;
 }

@@ -189,10 +189,13 @@ function draw() {
 
   if (isGameOver) {
     cancelAnimationFrame(intervalId);
-    gameIntro.style.display = "block";
+    gameIntro.style.display = "none";
     startBtn.style.display = "none";
     canvas.style.display = "none";
     restartBtn.style.display = "block";
+    scoreBoard.style.display= "none";
+    scoreKeeper.style.display= 'none';
+    
 
     if(score > 2){
 
@@ -216,7 +219,8 @@ function start() {
   canvas.style.display = "block";
   gameLose.style.display = 'none'
   gameVictory.style.display = 'none';
-  scoreBoard.style.display= 'block'
+  scoreBoard.style.display= 'block';
+  scoreKeeper.style.display= 'inline';
   
   draw();
 }
@@ -265,7 +269,8 @@ window.addEventListener("load", (event) => {
   restartBtn.style.display = "none";
   gameVictory.style.display = "none";
   gameLose.style.display = 'none';
-  scoreBoard.style.display= "none"
+  scoreBoard.style.display= "none";
+  scoreKeeper.style.display= 'none';
 
   startBtn.addEventListener("click", (event) => {
     console.log("start");
