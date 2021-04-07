@@ -1,0 +1,113 @@
+#restart-lose-button {
+  
+    font-size: 22px;
+    letter-spacing: 1.3px;
+    background:silver;
+    border:none;
+    border-radius: 1000px;
+    box-shadow: 12px 12px 24px silver;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    display: flex;
+    margin-top: 50px;
+    margin-left: 900px;
+    align-items: center;
+    padding: 8px;
+    height: 40px;
+    width: 180px;
+  }
+  
+  #restart-lose-button::before{
+    content: '';
+    border-radius: 1000px;
+    height: calc(40px + 12px);
+    width: calc(180px + 12px);
+    border: 6px solid #D3D3D3;
+    box-shadow: 0 0 60px #C0C0C0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+  }
+  
+  #restart-lose-button:hover::before {
+    opacity: 1;
+  }
+
+  #restart-win-button {
+  
+    font-size: 20px;
+    letter-spacing: 1.3px;
+    background:silver;
+    border:none;
+    border-radius: 1000px;
+    box-shadow: 12px 12px 24px rgb(42, 51, 100);
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    display: flex;
+    margin-top: 50px;
+    margin-left: 900px;
+    align-items: center;
+    padding: 8px;
+    height: 40px;
+    width: 180px;
+  }
+
+  #restart-win-button::before{
+    content: '';
+    border-radius: 1000px;
+    height: calc(40px + 12px);
+    width: calc(180px + 12px);
+    border: 6px solid #D3D3D3;
+    box-shadow: 0 0 60px #C0C0C0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+  }
+  
+  #restart-win-button:hover::before {
+    opacity: 1;
+  }
+
+ #start-button {
+    font-size: 20px;
+    letter-spacing: 1.3px;
+    background:silver;
+    border:none;
+    border-radius: 1000px;
+    box-shadow: 12px 12px 24px rgb(55, 55, 56);
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    margin-top: 800px;
+    margin-left: 1000px; 
+    padding: 8px;
+    height: 40px;
+    width: 100px;
+  }
+
+ #start-button::before{
+    content: '';
+    border-radius: 1000px;
+    height: calc(40px + 12px);
+    width: calc(100px + 12px);
+    border: 6px solid #D3D3D3;
+    box-shadow: 0 0 60px #C0C0C0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+  }
+  
+  #start-button:hover::before {
+    opacity: 1;
+  }

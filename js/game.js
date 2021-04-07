@@ -1,15 +1,14 @@
 let canvas = document.querySelector("canvas");
 let gameIntro = document.querySelector(".game-intro");
 let gameVictory = document.querySelector(".game-victory");
-let gameInfo = document.querySelector(".game-info");
-let gameLose = document.querySelector(".game-loser")
+
+let gameLose = document.querySelector(".game-loser");
 let scoreKeeper = document.querySelector("#scoreKeeper");
-let scoreBoard = document.querySelector(".score-board")
+let scoreBoard = document.querySelector(".score-board");
 
-
+let audioStart = new Audio("./sounds/hedwigstheme.mp3");
 
 let ctx = canvas.getContext("2d");
-
 
 //load all images
 
@@ -49,7 +48,8 @@ let constant = distanceBetweenDem + dementor.height;
 
 // The DOM of the start and restart buttons
 let startBtn = document.querySelector("#start-button");
-let restartBtn = document.querySelector("#restart-button");
+let restartBtn = document.querySelector("#restart-win-button");
+let restartBtnLose = document.querySelector("#restart-lose-button");
 
 function draw() {
   //adding background image
@@ -57,7 +57,6 @@ function draw() {
 
   //adding harry potter image
   ctx.drawImage(hp, hpX, hpY);
-
 
   // here do movemement for each spell
   for (let h = 0; h < numOfSpells.length; h++) {
@@ -80,8 +79,8 @@ function draw() {
         //the first spell also disappears when the other spell hits the dementor
         x: canvas.width + 100,
       };
-      score++
-      scoreKeeper.innerText = score
+      score++;
+      scoreKeeper.innerText = score;
     }
 
     // collision with demTwo
@@ -100,8 +99,8 @@ function draw() {
       numOfSpells[h] = {
         x: canvas.width + 100,
       };
-      score++
-      scoreKeeper.innerText = score 
+      score++;
+      scoreKeeper.innerText = score;
     }
 
     if (numOfSpells.length > 0 && numOfSpells[h].x > canvas.width) {
@@ -121,8 +120,8 @@ function draw() {
       x: 845,
       y: Math.floor(Math.random() * (canvas.height / 2 - dementor.height)),
     };
-    score --
-    scoreKeeper.innerText = score 
+    score--;
+    scoreKeeper.innerText = score;
   }
   //collision with demOne
   if (
@@ -148,8 +147,8 @@ function draw() {
           Math.floor(Math.random() * (canvas.height / 2 - dementor.height)) +
           canvas.height / 2,
       };
-      score --
-      scoreKeeper.innerText = score 
+      score--;
+      scoreKeeper.innerText = score;
     }
     //collsion with demTwo
     if (
@@ -182,32 +181,28 @@ function draw() {
     isGameOver = true;
   }
 
-  if(score > 2){
-    isGameOver = true
-
-  } 
+  if (score > 2) {
+    isGameOver = true;
+  }
 
   if (isGameOver) {
     cancelAnimationFrame(intervalId);
     gameIntro.style.display = "none";
     startBtn.style.display = "none";
     canvas.style.display = "none";
-    restartBtn.style.display = "block";
-    scoreBoard.style.display= "none";
-    scoreKeeper.style.display= 'none';
-    
 
-    if(score > 2){
+    scoreBoard.style.display = "none";
+    scoreKeeper.style.display = "none";
 
-      gameVictory.style.display = "block"
-      gameLose.style.display = 'none'
-  
+    if (score > 2) {
+      gameVictory.style.display = "block";
+      gameLose.style.display = "none";
+      restartBtn.style.display = "block";
+    } else {
+      gameLose.style.display = "block";
+      gameVictory.style.display = "none";
+      restartBtnLose.style.display = "block";
     }
-    else{
-      gameLose.style.display = 'block'
-      gameVictory.style.display= 'none'
-    } 
-    //gameInfo.style.display = "none";
   } else {
     intervalId = requestAnimationFrame(draw);
   }
@@ -217,11 +212,11 @@ function start() {
   gameIntro.style.display = "none";
   startBtn.style.display = "none";
   canvas.style.display = "block";
-  gameLose.style.display = 'none'
-  gameVictory.style.display = 'none';
-  scoreBoard.style.display= 'block';
-  scoreKeeper.style.display= 'inline';
-  
+  gameLose.style.display = "none";
+  gameVictory.style.display = "none";
+  scoreBoard.style.display = "block";
+  scoreKeeper.style.display = "inline";
+
   draw();
 }
 
@@ -230,10 +225,10 @@ function restart() {
   hpX = 30;
   hpY = 30;
   demOne = [{ x: 845, y: 50 }];
-  demTwo =[{ x: 945, y: 250 }]
+  demTwo = [{ x: 945, y: 250 }];
   numOfSpells = [];
-  score= 0;
-  scoreKeeper.innerText= score
+  score = 0;
+  scoreKeeper.innerText = score;
   start();
 }
 
@@ -260,17 +255,26 @@ document.addEventListener("keyup", () => {
 
 restartBtn.addEventListener("click", (event) => {
   restartBtn.style.display = "none";
+  restartBtnLose.style.display = "none";
   console.log("restart");
   restart();
 });
 
+restartBtnLose.addEventListener("click", (event) => {
+  restartBtn.style.display = "none";
+  restartBtnLose.style.display = "none";
+  console.log("restart");
+  restart();
+});
 window.addEventListener("load", (event) => {
   canvas.style.display = "none";
   restartBtn.style.display = "none";
+  restartBtnLose.style.display = "none";
   gameVictory.style.display = "none";
-  gameLose.style.display = 'none';
-  scoreBoard.style.display= "none";
-  scoreKeeper.style.display= 'none';
+  gameLose.style.display = "none";
+  scoreBoard.style.display = "none";
+  scoreKeeper.style.display = "none";
+  audioStart.play();
 
   startBtn.addEventListener("click", (event) => {
     console.log("start");

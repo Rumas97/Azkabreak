@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Azkabreak</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel = "stylesheet" href="buttonstyle.css"/>
   </head>
   <body>
+    
     <div class="game-intro">
-      <h1 class="game-info">
-        Use the up and down arrow to move Harry Potter. Cast spells at incoming
-        Dementors using the space key.
-      </h1>
-      <img class="arrow" src="./images/arrowkey.png" alt="arrowkeys" />
-      <img class="space" src="./images/space.png" alt="spacekey" />
+      <h1>Use the up and down arrow to move Harry Potter. Cast spells at incoming Dementors using the space key.</h1>
+      <img id="arrow" src="./images/arrowkey.png" alt="arrowkeys" />
+      <img id="space" src="./images/space.png" alt="spacekey" />
       <button id="start-button">START</button>
     </div>
 
@@ -23,12 +22,12 @@
 
     <div class="game-victory">
       <p>Well done! You have succeeded in protecting the Hogwarts castle!</p>
-      <button id="restart-button">RESTART</button>
+      <button id="restart-win-button">RESTART</button>
     </div>
 
     <div class="game-loser">
       <p>The dementors now have control over Hogwarts!</p>
-      <button id="restart-button">RESTART</button>
+      <button id="restart-lose-button">RESTART</button>
     </div>
 
     <div class="score-board">

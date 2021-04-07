@@ -7,60 +7,48 @@ body {
   background-image: url("./images/logo.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: 0 0;
+  position: relative;
+  height: 950px;
 }
 
-div h1 {
+.game-intro > h1 {
   color: beige;
   text-align: center;
+  position: absolute;
+  top: 60%;
+  left: 12%;
+  padding: 0;
+  margin-top: 0px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column-reverse;
-  padding-top: 700px;
-  padding-left: 400px;
-  padding-right: 400px;
-  margin-top: 0;
-  margin-bottom: 10px;
+
 }
 
-div .arrow {
+#arrow {
+  position: absolute;
+  top:68%;
+  left: 45%;
   display: inline;
-
   height: 50px;
   width: 70px;
-  margin-left: 800px;
+   
 }
 
-div .space {
+#space {
+  position: absolute;
+  top:68%;
+  left:50%;
   display: inline;
   background-color: #39404d;
   height: 70px;
   width: 150px;
-  margin-left: 50px;
-}
-
-div #start-button {
-  font-size: 20px;
-  display: flex;
-  margin-top: 20px;
-  margin-left: 900px;
-  align-items: center;
-  padding: 8px;
-  height: 40px;
-  width: 90px;
-}
-
-div #restart-button {
   
-  font-size: 20px;
-  display: flex;
-  margin-top: 20px;
-  margin-left: 900px;
-  align-items: center;
-  padding: 8px;
-  height: 40px;
-  width: 120px;
 }
 
 canvas {
+  
   border: 1px solid black;
   margin-left: 350px;
 }
