@@ -28,17 +28,53 @@ body {
   width: 1394px;
 }
 
-.game-intro > p {
-  font-size: 20px;
-  font-family: fantasy;
+div h1 {
   color: beige;
   text-align: center;
   display: flex;
   flex-direction: column-reverse;
-  padding-top: 650px;
+  padding-top: 500px;
+  padding-left: 300px;
+  padding-right: 300px;
   margin-top: 0;
+  margin-bottom: 10px;
+}
+
+div .arrow {
+  background-color: whitesmoke;
+  height: 70px;
+  width: 70px;
+  margin-left: 550px;
+}
+
+div .space {
+  background-color: #39404d;
+  height: 70px;
+  width: 150px;
+  margin-left: 50px;
+}
+
+div #start-button {
+  display: flex;
+  justify-content: flex-end;
 }
 
 canvas {
   border: 1px solid black;
+  margin-left: 0px;
+}
+
+.score-board > span {
+  font-family: fantasy;
+  margin-left: 0px;
+}
+
+.game-victory {
+  font-size: 20px;
+  font-family: fantasy;
+}
+
+.game-loser {
+  font-size: 20px;
+  font-family: fantasy;
 }
