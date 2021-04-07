@@ -3,29 +3,10 @@ body {
   padding: 0;
 }
 
-#start-button {
-  background-color: darkgrey;
-  height: 40px;
-  width: 90px;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-size: 20px;
-}
-
-#restart-button {
-  background-color: darkgrey;
-  height: 40px;
-  width: 120px;
-  font-size: 20px;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
 .game-intro {
   background-image: url("./images/logo.png");
   background-repeat: no-repeat;
-  height: 793px;
-  width: 1394px;
+  background-size: cover;
 }
 
 div h1 {
@@ -33,21 +14,23 @@ div h1 {
   text-align: center;
   display: flex;
   flex-direction: column-reverse;
-  padding-top: 500px;
-  padding-left: 300px;
-  padding-right: 300px;
+  padding-top: 700px;
+  padding-left: 400px;
+  padding-right: 400px;
   margin-top: 0;
   margin-bottom: 10px;
 }
 
 div .arrow {
-  background-color: whitesmoke;
-  height: 70px;
+  display: inline;
+
+  height: 50px;
   width: 70px;
-  margin-left: 550px;
+  margin-left: 800px;
 }
 
 div .space {
+  display: inline;
   background-color: #39404d;
   height: 70px;
   width: 150px;
@@ -55,8 +38,25 @@ div .space {
 }
 
 div #start-button {
+  font-size: 20px;
   display: flex;
-  justify-content: flex-end;
+  margin-top: 20px;
+  margin-left: 900px;
+  align-items: center;
+  padding: 8px;
+  height: 40px;
+  width: 90px;
+}
+
+div #restart-button {
+  font-size: 20px;
+  display: flex;
+  margin-top: 20px;
+  margin-left: 650px;
+  align-items: center;
+  padding: 8px;
+  height: 40px;
+  width: 120px;
 }
 
 canvas {
