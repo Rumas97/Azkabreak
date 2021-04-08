@@ -173,12 +173,6 @@ function draw() {
     }
   }
 
-  //y = Math.floor((i*canvas.height/demOne.length) +(Math.random()*canvas.height/demOne.length)-dementor.height)
-
-  /*if(y < i*canvas.height/demOne.length ){
-      y = Math.floor(i*canvas.height/demOne.length)
-    }*/
-
   if (isArrowUp && hpY > 0) {
     hpY = hpY - hpIncr;
   }
@@ -216,8 +210,6 @@ function draw() {
     startBtn.style.display = "none";
     canvas.style.display = "none";
     gameScreen.style.display = "none";
-    // scoreBoard.style.display = "none";
-    // scoreKeeper.style.display = "none";
 
     if (score > 5) {
       gameVictory.style.display = "flex";
@@ -244,8 +236,6 @@ function start() {
   gameScreen.style.display = "flex";
   gameLose.style.display = "none";
   gameVictory.style.display = "none";
-  // scoreBoard.style.display = "flex";
-  // scoreKeeper.style.display = "inline";
   audioLose.pause();
   audioWin.pause();
   audioStart.pause();
@@ -309,8 +299,6 @@ window.addEventListener("load", (event) => {
   gameVictory.style.display = "none";
   gameLose.style.display = "none";
   gameScreen.style.display = "none";
-  // scoreBoard.style.display = "none";
-  // scoreKeeper.style.display = "none";
 
   startBtn.addEventListener("click", (event) => {
     console.log("start");

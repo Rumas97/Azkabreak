@@ -5,35 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Azkabreak</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel = "stylesheet" href="buttonstyle.css"/>
+    <link rel="stylesheet" href="buttonstyle.css" />
   </head>
-  <body >
-    
+  <body>
     <div class="game-intro">
-      <div class= "info">
+      <div class="info">
         <button id="start-button">START</button>
-        <h1>Use the up and down arrow to move Harry Potter. Cast spells at incoming Dementors using the space key.</h1>
-        <div class = "icons">
+        <h1>
+          Use the up and down arrow to move Harry Potter. Cast spells at
+          incoming Dementors using the space key.
+        </h1>
+        <div class="icons">
           <img id="arrow" src="./images/arrowkey.png" alt="arrowkeys" />
           <img id="space" src="./images/space.png" alt="spacekey" />
         </div>
-
       </div>
 
-      <button id= "music">Music: Off</button>
+      <button id="music">Music: Off</button>
     </div>
 
     <div id="game-screen">
       <div class="score-board">
-        <span>Dementors killed: </span><span style="color: black;" id="scoreKeeper">0</span>
+        <span>Dementors killed: </span
+        ><span style="color: black" id="scoreKeeper">0</span>
       </div>
       <canvas width="900" height="500"></canvas>
     </div>
-
-
-    
-
-    <!-- <canvas class = "scoreBoard"></canvas> -->
 
     <div class="game-victory">
       <p>Well done! You have succeeded in protecting the Hogwarts castle!</p>
@@ -44,8 +41,6 @@
       <p>The dementors now have control over Hogwarts!</p>
       <button id="restart-lose-button">RESTART</button>
     </div>
-
-
 
     <script src="js/game.js"></script>
   </body>
