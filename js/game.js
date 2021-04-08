@@ -6,7 +6,11 @@ let gameLose = document.querySelector(".game-loser");
 let scoreKeeper = document.querySelector("#scoreKeeper");
 let scoreBoard = document.querySelector(".score-board");
 
-let audioStart = new Audio("./sounds/hedwigstheme.mp3");
+let audioStartBtn = document.querySelector("#music");
+let audioStart = new Audio("./sounds/Harry_Potter_Intro.mp3");
+let audioSpell = new Audio("./sounds/Shoot.mp3");
+let audioLose = new Audio("./sounds/Gamelost.mp3");
+let audioWin = new Audio("./sounds/PatronusLight.mp3");
 
 let ctx = canvas.getContext("2d");
 
@@ -185,6 +189,9 @@ function draw() {
     isGameOver = true;
   }
 
+  if (score > 0) {
+  }
+
   if (isGameOver) {
     cancelAnimationFrame(intervalId);
     gameIntro.style.display = "none";
@@ -198,10 +205,12 @@ function draw() {
       gameVictory.style.display = "block";
       gameLose.style.display = "none";
       restartBtn.style.display = "block";
+      audioWin.play();
     } else {
       gameLose.style.display = "block";
       gameVictory.style.display = "none";
       restartBtnLose.style.display = "block";
+      audioLose.play();
     }
   } else {
     intervalId = requestAnimationFrame(draw);
@@ -216,6 +225,9 @@ function start() {
   gameVictory.style.display = "none";
   scoreBoard.style.display = "block";
   scoreKeeper.style.display = "inline";
+  audioLose.pause();
+  audioWin.pause();
+  audioStart.pause();
 
   draw();
 }
@@ -243,6 +255,7 @@ document.addEventListener("keydown", (event) => {
     isArrowDown = true;
   } else if (event.code == "Space") {
     numOfSpells.push({ x: hpX + hp.width, y: hpY + hp.height / 2 }); // here push one spell to the array if space is clicked. Then set space to be false.
+    audioSpell.play();
     isSpaceKey = false;
   }
 });
@@ -256,6 +269,7 @@ document.addEventListener("keyup", () => {
 restartBtn.addEventListener("click", (event) => {
   restartBtn.style.display = "none";
   restartBtnLose.style.display = "none";
+
   console.log("restart");
   restart();
 });
@@ -274,10 +288,19 @@ window.addEventListener("load", (event) => {
   gameLose.style.display = "none";
   scoreBoard.style.display = "none";
   scoreKeeper.style.display = "none";
-  audioStart.play();
 
   startBtn.addEventListener("click", (event) => {
     console.log("start");
     start();
+  });
+
+  audioStartBtn.addEventListener("click", (event) => {
+    if (audioStartBtn.innerHTML == "Music: Off") {
+      audioStart.play();
+      audioStartBtn.innerHTML = "Music: On";
+    } else if (audioStartBtn.innerHTML == "Music: On") {
+      audioStart.pause();
+      audioStartBtn.innerHTML = "Music: Off";
+    }
   });
 });
