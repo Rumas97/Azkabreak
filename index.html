@@ -7,18 +7,26 @@
     <link rel="stylesheet" href="style.css" />
     <link rel = "stylesheet" href="buttonstyle.css"/>
   </head>
-  <body>
+  <body >
     
     <div class="game-intro">
-      <h1>Use the up and down arrow to move Harry Potter. Cast spells at incoming Dementors using the space key.</h1>
-      <img id="arrow" src="./images/arrowkey.png" alt="arrowkeys" />
-      <img id="space" src="./images/space.png" alt="spacekey" />
-      <button id="start-button">START</button>
+      <div class= "info">
+        <button id="start-button">START</button>
+        <h1>Use the up and down arrow to move Harry Potter. Cast spells at incoming Dementors using the space key.</h1>
+        <div class = "icons">
+          <img id="arrow" src="./images/arrowkey.png" alt="arrowkeys" />
+          <img id="space" src="./images/space.png" alt="spacekey" />
+        </div>
+
+      </div>
+
       <button id= "music">Music: Off</button>
-     
     </div>
 
-    <canvas width="900" height="500"></canvas>
+    <div id="background-game"style="background-color: linen;">
+      <canvas width="900" height="500"></canvas>
+    </div>
+    
 
     <!-- <canvas class = "scoreBoard"></canvas> -->
 
@@ -33,7 +41,7 @@
     </div>
 
     <div class="score-board">
-      <span>Dementors killed: </span><span id="scoreKeeper">0</span>
+      <span>Dementors killed: </span><span style="color: black;" id="scoreKeeper">0</span>
     </div>
 
     <script src="js/game.js"></script>

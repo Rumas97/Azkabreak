@@ -85,6 +85,7 @@ function draw() {
       };
       score++;
       scoreKeeper.innerText = score;
+      audioSpell.play();
     }
 
     // collision with demTwo
@@ -105,6 +106,7 @@ function draw() {
       };
       score++;
       scoreKeeper.innerText = score;
+      audioSpell.play();
     }
 
     if (numOfSpells.length > 0 && numOfSpells[h].x > canvas.width) {
@@ -134,7 +136,7 @@ function draw() {
     demOne[i].y <= hpY + hp.height &&
     demOne[i].y + dementor.height >= hpY
   ) {
-    isGameOver = true;
+    isGameOver = false;
     console.log("dementor 1 crash");
   }
   //}
@@ -161,7 +163,7 @@ function draw() {
       demTwo[j].y <= hpY + hp.height &&
       demTwo[j].y + dementor.height >= hpY
     ) {
-      isGameOver = true;
+      isGameOver = false;
       console.log("dementor 2 crash");
     }
   }
@@ -189,8 +191,14 @@ function draw() {
     isGameOver = true;
   }
 
-  if (score > 0) {
+  if (score <= -1) {
+    scoreKeeper.style.color = "red"
   }
+  if(score >=1 ){
+    scoreKeeper.style.color = "blue"
+  }
+
+  
 
   if (isGameOver) {
     cancelAnimationFrame(intervalId);
@@ -206,11 +214,13 @@ function draw() {
       gameLose.style.display = "none";
       restartBtn.style.display = "block";
       audioWin.play();
+      audioWin.currentTime= 0
     } else {
       gameLose.style.display = "block";
       gameVictory.style.display = "none";
       restartBtnLose.style.display = "block";
       audioLose.play();
+      audioLose.currentTime= 0
     }
   } else {
     intervalId = requestAnimationFrame(draw);
@@ -255,7 +265,7 @@ document.addEventListener("keydown", (event) => {
     isArrowDown = true;
   } else if (event.code == "Space") {
     numOfSpells.push({ x: hpX + hp.width, y: hpY + hp.height / 2 }); // here push one spell to the array if space is clicked. Then set space to be false.
-    audioSpell.play();
+    
     isSpaceKey = false;
   }
 });

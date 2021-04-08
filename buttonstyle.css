@@ -86,11 +86,10 @@
     cursor: pointer;
     outline: none;
     position: relative;
-    margin-top: 800px;
-    margin-left: 900px; 
     padding: 8px;
     height: 40px;
     width: 100px;
+
   }
 
  #start-button::before{
@@ -110,4 +109,21 @@
   
   #start-button:hover::before {
     opacity: 1;
+  }
+
+  #music{
+    font-size: 20px;
+    letter-spacing: 1.3px;
+    background:silver;
+    border:none;
+    border-radius: 1000px;
+    box-shadow: 12px 12px 24px rgb(55, 55, 56);
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    padding: 8px;
+    height: 40px;
+    width: 150px;
   }

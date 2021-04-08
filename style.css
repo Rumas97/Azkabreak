@@ -3,72 +3,85 @@ body {
   padding: 0;
 }
 
+h1 {
+  font-family: ;
+  margin: 20px 50px;
+  color: beige;
+}
 .game-intro {
   background-image: url("./images/logo.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
-  position: relative;
-  height: 950px;
+  /* position: relative; */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* flex-direction: column-reverse; */
 }
 
-.game-intro > h1 {
-  color: beige;
-  text-align: center;
-  position: absolute;
-  top: 60%;
-  left: 12%;
-  padding: 0;
-  margin-top: 0px;
-  margin-bottom: 10px;
+.info {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
 }
 
 #arrow {
-  position: absolute;
+  /*position: absolute;
   top:68%;
-  left: 45%;
+  left: 45%;*/
   display: inline;
   height: 50px;
   width: 70px;
-   
 }
 
 #space {
-  position: absolute;
+  /*position: absolute;
   top:68%;
-  left:50%;
+  left:55%;*/
   display: inline;
-  background-color: #39404d;
   height: 70px;
   width: 150px;
-  
 }
 
 canvas {
-  
   border: 1px solid black;
-  margin-left: 350px;
+  position: relative;
+}
+
+#background-game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .score-board {
   font-family: fantasy;
   margin-left: 350px;
+  position: absolute;
+  top: 10%;
 }
 
 .game-victory {
   background-image: url("./images/castle.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 850px; 
+  height: 850px;
   padding-top: 50px;
   position: relative;
-  
 }
 
-.game-victory p{
+.game-victory p {
   color: beige;
   font-size: 40px;
   font-family: fantasy;
@@ -78,20 +91,18 @@ canvas {
   margin-top: 0px;
   margin-bottom: 10px;
   text-align: center;
-
-
 }
 
-.game-loser{
-  background-image:url("./images/castle-attacked.jpg");
+.game-loser {
+  background-image: url("./images/castle-attacked.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height:850px;
-  padding-top:50px;
+  height: 850px;
+  padding-top: 50px;
   position: relative;
 }
 
-.game-loser p{
+.game-loser p {
   color: black;
   font-size: 40px;
   font-family: fantasy;
