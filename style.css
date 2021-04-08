@@ -59,14 +59,15 @@ h1 {
 }
 
 canvas {
-  border: 1px solid rgb(197, 194, 189);
+  
+  border: 3px solid #95928D;
 }
 
 .score-board {
   font-family: "Special Elite";
   background-color: rgb(243, 236, 236);
   padding: 10px;
-  border-radius: 1000px;
+  border-radius: 1000px; 
 }
 
 .game-victory {

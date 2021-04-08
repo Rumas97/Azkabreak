@@ -21,7 +21,7 @@ let ctx = canvas.getContext("2d");
 //load all images
 
 let bg = new Image();
-bg.src = "./images/background.jpg";
+bg.src = "./images/plainbg.png";
 
 let hp = new Image();
 hp.src = "./images/harry.png";
@@ -30,7 +30,7 @@ let dementor = new Image();
 dementor.src = "./images/dementor.png";
 
 let spell = new Image();
-spell.src = "./images/spell.png";
+spell.src = "./images/spelldark.png";
 
 let intervalId = 0;
 let isGameOver = false;
