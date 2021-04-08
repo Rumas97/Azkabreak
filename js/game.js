@@ -16,8 +16,8 @@ let ctx = canvas.getContext("2d");
 
 //load all images
 
- let bg = new Image();
- bg.src = "./images/background.jpg";
+let bg = new Image();
+bg.src = "./images/background.jpg";
 
 let hp = new Image();
 hp.src = "./images/harry.png";
@@ -46,6 +46,7 @@ let isArrowUp = false,
 // number of dementor objects
 let demOne = [{ x: 845, y: 50 }];
 let demTwo = [{ x: 945, y: 250 }];
+let demIncr = 4;
 
 let distanceBetweenDem = 150;
 let constant = distanceBetweenDem + dementor.height;
@@ -119,7 +120,7 @@ function draw() {
   let i = 0;
 
   ctx.drawImage(dementor, demOne[i].x, demOne[i].y);
-  demOne[i].x = demOne[i].x - 4;
+  demOne[i].x = demOne[i].x - demIncr;
 
   if (demOne[i].x + dementor.width < 0) {
     demOne[i] = {
@@ -136,7 +137,7 @@ function draw() {
     demOne[i].y <= hpY + hp.height &&
     demOne[i].y + dementor.height >= hpY
   ) {
-    isGameOver = false;
+    isGameOver = true;
     console.log("dementor 1 crash");
   }
   //}
@@ -144,7 +145,7 @@ function draw() {
   //Dementor 2 logic
   for (let j = 0; j < demTwo.length; j++) {
     ctx.drawImage(dementor, demTwo[j].x, demTwo[j].y);
-    demTwo[j].x = demTwo[j].x - 4;
+    demTwo[j].x = demTwo[j].x - demIncr;
 
     if (demTwo[j].x + dementor.width < 0) {
       demTwo[j] = {
@@ -163,7 +164,7 @@ function draw() {
       demTwo[j].y <= hpY + hp.height &&
       demTwo[j].y + dementor.height >= hpY
     ) {
-      isGameOver = false;
+      isGameOver = true;
       console.log("dementor 2 crash");
     }
   }
@@ -188,42 +189,44 @@ function draw() {
   }
 
   if (score > 2) {
+    demIncr = 5;
+  }
+
+  if (score > 5) {
     isGameOver = true;
   }
-  if(score < -5){
-    isGameOver = false
+  if (score < -5) {
+    isGameOver = true;
   }
 
   if (score <= -1) {
-    scoreKeeper.style.color = "red"
+    scoreKeeper.style.color = "red";
   }
-  if(score >=1 ){
-    scoreKeeper.style.color = "blue"
+  if (score >= 1) {
+    scoreKeeper.style.color = "blue";
   }
-
-  
 
   if (isGameOver) {
     cancelAnimationFrame(intervalId);
     gameIntro.style.display = "none";
     startBtn.style.display = "none";
     canvas.style.display = "none";
-    gameScreen.style.display="none"
+    gameScreen.style.display = "none";
     // scoreBoard.style.display = "none";
     // scoreKeeper.style.display = "none";
 
-    if (score > 2) {
+    if (score > 5) {
       gameVictory.style.display = "flex";
       gameLose.style.display = "none";
       restartBtn.style.display = "block";
       audioWin.play();
-      audioWin.currentTime= 0
+      audioWin.currentTime = 0;
     } else {
       gameLose.style.display = "flex";
       gameVictory.style.display = "none";
       restartBtnLose.style.display = "block";
       audioLose.play();
-      audioLose.currentTime= 0
+      audioLose.currentTime = 0;
     }
   } else {
     intervalId = requestAnimationFrame(draw);
@@ -234,7 +237,7 @@ function start() {
   gameIntro.style.display = "none";
   startBtn.style.display = "none";
   canvas.style.display = "block";
-  gameScreen.style.display='flex';
+  gameScreen.style.display = "flex";
   gameLose.style.display = "none";
   gameVictory.style.display = "none";
   // scoreBoard.style.display = "flex";
@@ -269,7 +272,7 @@ document.addEventListener("keydown", (event) => {
     isArrowDown = true;
   } else if (event.code == "Space") {
     numOfSpells.push({ x: hpX + hp.width, y: hpY + hp.height / 2 }); // here push one spell to the array if space is clicked. Then set space to be false.
-    
+
     isSpaceKey = false;
   }
 });
@@ -300,7 +303,7 @@ window.addEventListener("load", (event) => {
   restartBtnLose.style.display = "none";
   gameVictory.style.display = "none";
   gameLose.style.display = "none";
-  gameScreen.style.display='none';
+  gameScreen.style.display = "none";
   // scoreBoard.style.display = "none";
   // scoreKeeper.style.display = "none";
 
