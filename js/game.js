@@ -8,9 +8,13 @@ let scoreBoard = document.querySelector(".score-board");
 
 let audioStartBtn = document.querySelector("#music");
 let audioStart = new Audio("./sounds/Harry_Potter_Intro.mp3");
+audioStart.volume = 0.05;
 let audioSpell = new Audio("./sounds/Shoot.mp3");
+audioSpell.volume = 0.05;
 let audioLose = new Audio("./sounds/Gamelost.mp3");
+audioLose.volume = 0.05;
 let audioWin = new Audio("./sounds/PatronusLight.mp3");
+audioWin.volume = 0.05;
 
 let ctx = canvas.getContext("2d");
 
