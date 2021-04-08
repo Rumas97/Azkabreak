@@ -23,9 +23,14 @@
       <button id= "music">Music: Off</button>
     </div>
 
-    <div id="background-game"style="background-color: linen;">
+    <div id="game-screen">
+      <div class="score-board">
+        <span>Dementors killed: </span><span style="color: black;" id="scoreKeeper">0</span>
+      </div>
       <canvas width="900" height="500"></canvas>
     </div>
+
+
     
 
     <!-- <canvas class = "scoreBoard"></canvas> -->
@@ -40,9 +45,7 @@
       <button id="restart-lose-button">RESTART</button>
     </div>
 
-    <div class="score-board">
-      <span>Dementors killed: </span><span style="color: black;" id="scoreKeeper">0</span>
-    </div>
+
 
     <script src="js/game.js"></script>
   </body>

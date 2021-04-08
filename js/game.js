@@ -1,7 +1,7 @@
 let canvas = document.querySelector("canvas");
 let gameIntro = document.querySelector(".game-intro");
 let gameVictory = document.querySelector(".game-victory");
-
+let gameScreen = document.querySelector("#game-screen");
 let gameLose = document.querySelector(".game-loser");
 let scoreKeeper = document.querySelector("#scoreKeeper");
 let scoreBoard = document.querySelector(".score-board");
@@ -16,8 +16,8 @@ let ctx = canvas.getContext("2d");
 
 //load all images
 
-let bg = new Image();
-bg.src = "./images/background.jpg";
+ let bg = new Image();
+ bg.src = "./images/background.jpg";
 
 let hp = new Image();
 hp.src = "./images/harry.png";
@@ -190,6 +190,9 @@ function draw() {
   if (score > 2) {
     isGameOver = true;
   }
+  if(score < -5){
+    isGameOver = false
+  }
 
   if (score <= -1) {
     scoreKeeper.style.color = "red"
@@ -205,18 +208,18 @@ function draw() {
     gameIntro.style.display = "none";
     startBtn.style.display = "none";
     canvas.style.display = "none";
-
-    scoreBoard.style.display = "none";
-    scoreKeeper.style.display = "none";
+    gameScreen.style.display="none"
+    // scoreBoard.style.display = "none";
+    // scoreKeeper.style.display = "none";
 
     if (score > 2) {
-      gameVictory.style.display = "block";
+      gameVictory.style.display = "flex";
       gameLose.style.display = "none";
       restartBtn.style.display = "block";
       audioWin.play();
       audioWin.currentTime= 0
     } else {
-      gameLose.style.display = "block";
+      gameLose.style.display = "flex";
       gameVictory.style.display = "none";
       restartBtnLose.style.display = "block";
       audioLose.play();
@@ -231,10 +234,11 @@ function start() {
   gameIntro.style.display = "none";
   startBtn.style.display = "none";
   canvas.style.display = "block";
+  gameScreen.style.display='flex';
   gameLose.style.display = "none";
   gameVictory.style.display = "none";
-  scoreBoard.style.display = "block";
-  scoreKeeper.style.display = "inline";
+  // scoreBoard.style.display = "flex";
+  // scoreKeeper.style.display = "inline";
   audioLose.pause();
   audioWin.pause();
   audioStart.pause();
@@ -296,8 +300,9 @@ window.addEventListener("load", (event) => {
   restartBtnLose.style.display = "none";
   gameVictory.style.display = "none";
   gameLose.style.display = "none";
-  scoreBoard.style.display = "none";
-  scoreKeeper.style.display = "none";
+  gameScreen.style.display='none';
+  // scoreBoard.style.display = "none";
+  // scoreKeeper.style.display = "none";
 
   startBtn.addEventListener("click", (event) => {
     console.log("start");

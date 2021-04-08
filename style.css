@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
 body {
   margin: 0;
   padding: 0;
 }
 
 h1 {
-  font-family: ;
+  font-family: "Special Elite";
   margin: 20px 50px;
   color: beige;
 }
@@ -53,38 +55,52 @@ h1 {
   width: 150px;
 }
 
-canvas {
-  border: 1px solid black;
-  position: relative;
-}
-
-#background-game {
+#game-screen {
+  background-image: url("./images/hogwarts.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
 }
 
+canvas {
+  border: 1px solid rgb(197, 194, 189);
+  /* position: relative; */
+}
+
 .score-board {
-  font-family: fantasy;
-  margin-left: 350px;
-  position: absolute;
-  top: 10%;
+  font-family: "Special Elite";
+  background-color: rgb(243, 236, 236);
+  padding: 10px;
+  border-radius: 1000px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* position: absolute;
+  top:5%;
+  left:5%; */
 }
 
 .game-victory {
   background-image: url("./images/castle.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 850px;
+  background-position: 0 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
   padding-top: 50px;
-  position: relative;
+  /* position: relative; */
 }
 
 .game-victory p {
   color: beige;
   font-size: 40px;
-  font-family: fantasy;
+  font-family: "Special Elite";
   padding-top: 50px;
   padding-left: 150px;
   padding-right: 150px;
@@ -97,19 +113,25 @@ canvas {
   background-image: url("./images/castle-attacked.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 850px;
+  background-position: 0 0;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
   padding-top: 50px;
-  position: relative;
+
+  /* position: relative; */
 }
 
 .game-loser p {
-  color: black;
+  color: rgb(2, 247, 255);
   font-size: 40px;
-  font-family: fantasy;
-  padding-top: 50px;
+  font-family: "Special Elite";
+  /* padding-top: 50px;
   padding-left: 150px;
   padding-right: 150px;
   margin-top: 0px;
   margin-bottom: 10px;
-  text-align: center;
+  text-align: center; */
 }
