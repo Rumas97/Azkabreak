@@ -81,7 +81,7 @@ isAKey = false;
 // number of dementor objects
 let demOne = [{ x: 845, y: 50 }];
 let demTwo = [{ x: 945, y: 250 }];
-let demIncr = 2;
+let demIncr = 3;
 
 let distanceBetweenDem = 150;
 let constant = distanceBetweenDem + dementor.height;
@@ -447,7 +447,7 @@ function draw() {
   }
 
   if (score > 5) {
-    demIncr = 4;
+    demIncr = 5;
   }
 
   if (score > 20) {
