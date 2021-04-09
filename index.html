@@ -13,7 +13,7 @@
         <button id="start-button">START</button>
         <h1>
           Use the up and down arrow to move Harry Potter. Cast spells at
-          incoming Dementors using the space key.
+          incoming Dementors using the space key. Special key activated after score reaches 5 points. Press key A for the surprise!
         </h1>
         <div class="icons">
           <img id="arrow" src="./images/arrowkey.png" alt="arrowkeys" />
@@ -26,8 +26,12 @@
 
     <div id="game-screen">
       <div class="score-board">
-        <span>Dementors killed: </span
-        ><span style="color: black" id="scoreKeeper">0</span>
+        <span>Dementors killed: </span>
+        <span style="color: black" id="scoreKeeper">0</span>
+      </div>
+      <div class= "avenger-team">
+        <span>Dreamteam: </span>
+        <span id="call-avengers">Assembling!</span>
       </div>
       <canvas width="900" height="500"></canvas>
     </div>
